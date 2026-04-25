@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
+import About from "./About";
+import SmartFilter from "./SmartFilter";
 
 export default function Home() {
   const [darkNav, setDarkNav] = useState(true);
@@ -29,42 +31,9 @@ export default function Home() {
 
       <Hero />
 
-      {/* ABOUT */}
-      <section className="py-28 text-center px-6 bg-gray-100">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-semibold">
-            A private home for your memories
-          </h2>
-          <p className="mt-6 text-gray-600 text-lg">
-            Built for people who value ownership and simplicity. No tracking.
-            No clutter. Just your photos—secure and accessible.
-          </p>
-        </div>
-      </section>
+      <About />
 
-      {/* FEATURES */}
-      <section
-        id="features"
-        className="py-28 px-6 bg-gradient-to-b from-[#f8f5f2] to-[#f3efe9]"
-      >
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl text-center font-semibold">
-            Built for privacy
-          </h2>
-
-          <div className="mt-16 grid md:grid-cols-2 gap-10">
-            {features.map((f, i) => (
-              <div
-                key={i}
-                className="p-10 rounded-2xl border bg-white shadow-sm"
-              >
-                <h3 className="text-xl font-medium">{f.title}</h3>
-                <p className="mt-3 text-gray-600">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SmartFilter />
 
       {/* HOW IT WORKS */}
       <section id="how" className="py-28 px-6 bg-white text-center">

@@ -27,13 +27,13 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
 
-          {/* Logo */}
+          {/* logo */}
           <div className="flex items-center gap-3 font-semibold">
             <img src="/logo.png" className="w-8 h-8" />
             <span>Ente Photo</span>
           </div>
 
-          {/* Desktop */}
+          {/* desktop */}
           <div className="hidden md:flex gap-8 text-sm">
             <a href="#home">Home</a>
             <a href="#features">Features</a>
@@ -41,7 +41,7 @@ export default function Navbar() {
             <a href="#contact">Contact</a>
           </div>
 
-          {/* Desktop Button */}
+         
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -53,7 +53,7 @@ export default function Navbar() {
             Contact
           </motion.a>
 
-          {/* Mobile Button */}
+          {/* mobile view */}
           <button
             className="md:hidden text-2xl"
             onClick={() => setMenuOpen(true)}
@@ -63,7 +63,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE MENU */}
+      {/* mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -89,7 +89,7 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Links */}
+           
             <div className="flex flex-col gap-8 px-8 text-lg mt-10">
               {links.map((item, i) => (
                 <motion.a
@@ -106,7 +106,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Bottom Button */}
+           
             <div className="px-6 pb-10">
               <motion.a
                 href="#contact"

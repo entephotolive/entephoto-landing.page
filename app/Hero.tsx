@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-[#05060a] via-[#0b1220] to-black text-white overflow-hidden flex items-center justify-center">
 
-      {/* BACKGROUND GLOW */}
+    {/* BACKGROUND GLOW */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute w-[600px] h-[600px] bg-blue-600/10 blur-[140px] top-[-200px] left-[-200px]" />
         <div className="absolute w-[500px] h-[500px] bg-purple-600/10 blur-[140px] bottom-[-200px] right-[-200px]" />
@@ -26,7 +26,7 @@ export default function Hero() {
           className="absolute text-white/10 font-semibold tracking-widest"
           style={{
             top: `${20 + i * 25}%`,
-            left: `${10 + i * 30}%`,
+            
             fontSize: "22px",
           }}
           animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
@@ -36,7 +36,7 @@ export default function Hero() {
         </motion.div>
       ))}
 
-      {/* ICONS */}
+      {/* icons */}
       <motion.div
         className="absolute left-10 top-32 text-white/20"
         animate={{ y: [0, -20, 0] }}
@@ -69,7 +69,7 @@ export default function Hero() {
         <ShieldCheck size={32} />
       </motion.div>
 
-      {/* MAIN CONTENT */}
+      {/* main content */}
       <div className="text-center px-6 max-w-3xl mx-auto">
 
         <motion.h1
@@ -111,19 +111,20 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* SCROLL INDICATOR */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-white/60"
-      >
-        <p className="text-sm font-medium mb-1">Scroll to explore</p>
-        <ArrowDown className="mx-auto" size={22} />
-      </motion.div>
+      
+     {/* scroll thing */}
+<motion.div
+  animate={{ y: [0, 10, 0] }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="absolute bottom-8 w-full flex flex-col items-center justify-center text-white/60"
+>
+  <p className="text-sm font-medium mb-1">Scroll to explore</p>
+  <ArrowDown size={22} />
+</motion.div>
     </section>
   );
 }
