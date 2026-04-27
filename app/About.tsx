@@ -5,7 +5,7 @@ import { ShieldCheck, Sparkles, Lock } from "lucide-react";
 
 export default function About() {
   return (
-    <section className="relative py-28 px-6 bg-[#f7f7f9] overflow-hidden">
+    <section id="features" className="relative py-28 px-6 bg-[#f7f7f9] overflow-hidden">
 
      
       <div className="absolute inset-0 -z-10">
@@ -33,8 +33,8 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900"
         >
-          A private home for your{" "}
-          <span className="text-gray-500">memories</span>
+          A Private Home For Your{" "}
+          <span className="text-gray-500">Memories</span>
         </motion.h2>
 
         

@@ -1,12 +1,42 @@
+@import "tw-animate-css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ===== BASE ===== */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
+  overflow-x: hidden;   /* ✅ ADD THIS */
 }
 
 body {
   font-family: system-ui, sans-serif;
+  overflow-x: hidden;   /* ✅ ADD THIS */
+}
+
+/* ===== SHADCN VARIABLES ===== */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --border: 214 32% 91%;
+    --primary: 25 60% 35%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+    --border: 214 32% 30%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
