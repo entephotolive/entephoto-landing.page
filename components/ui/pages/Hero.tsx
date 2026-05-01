@@ -164,13 +164,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
           transition={{ delay: 0.8 }}
-          className="mt-10 flex justify-center gap-5"
+          className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
         >
-          <button className="px-10 py-4 rounded-full text-white font-bold bg-gradient-to-r from-orange-400 to-purple-600 shadow-xl hover:scale-105 transition">
+          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full text-white font-semibold text-sm sm:text-base bg-gradient-to-r from-orange-400 to-purple-600 shadow-xl hover:scale-105 transition">
             Try It Now →
           </button>
 
-          <button className="px-10 py-4 rounded-full border border-purple-100 bg-white text-gray-700 font-bold hover:bg-gray-50">
+          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-purple-100 bg-white text-gray-700 font-semibold text-sm sm:text-base hover:bg-gray-50 transition">
             Learn More
           </button>
         </motion.div>

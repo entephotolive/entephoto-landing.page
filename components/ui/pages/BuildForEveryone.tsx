@@ -80,7 +80,7 @@ export default function BuildForEveryone() {
         </motion.p>
 
         {/* CARDS */}
-        <div className="grid md:grid-cols-2 gap-16 mt-20">
+        <div className="grid lg:grid-cols-2 gap-16 mt-20">
 
           {/* LEFT */}
           <motion.div
@@ -90,7 +90,7 @@ export default function BuildForEveryone() {
           >
             <div className="pointer-events-none absolute w-[300px] h-[240px] bg-blue-100 rounded-[60%] blur-2xl opacity-60 right-6 top-16"></div>
 
-            <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
+            <div className="relative z-10 grid lg:grid-cols-2 gap-6 items-center">
 
               <div className="text-left">
 
@@ -122,6 +122,13 @@ export default function BuildForEveryone() {
               </motion.div>
 
             </div>
+
+            <div className="mt-6">
+              <button className="w-full py-4 rounded-xl bg-blue-600 text-white font-semibold text-base hover:bg-blue-700 transition">
+                Explore Events →
+              </button>
+            </div>
+
           </motion.div>
 
           {/* RIGHT */}
@@ -132,7 +139,7 @@ export default function BuildForEveryone() {
           >
             <div className="pointer-events-none absolute w-[320px] h-[260px] bg-green-100 rounded-[60%] blur-2xl opacity-60 left-6 top-16"></div>
 
-            <div className="relative z-10 grid md:grid-cols-2 gap-6 items-center">
+            <div className="relative z-10 grid lg:grid-cols-2 gap-6 items-center">
 
               <div className="text-left">
 
@@ -159,12 +166,30 @@ export default function BuildForEveryone() {
 
               </div>
 
-              <motion.div variants={scaleIn} className="relative flex justify-center items-end">
-                <img src="/phone/laptop.webp" className="w-[320px] relative z-10 drop-shadow-xl rotate-1" />
-                <img src="/phone/camera.png" className="w-[140px] absolute -bottom-4 right-40 z-20 drop-shadow-2xl -rotate-6" />
+              <motion.div
+                variants={scaleIn}
+                className="relative flex justify-center items-center mt-10 lg:mt-0"
+              >
+                <img
+                  src="/phone/laptop.webp"
+                  className="w-[220px] sm:w-[240px] md:w-[260px] lg:w-[320px] relative z-10 translate-x-2 sm:translate-x-4 md:translate-x-6 lg:translate-x-10"
+                />
+
+                <img
+                  src="/phone/camera.png"
+                  className="w-[90px] sm:w-[110px] md:w-[120px] lg:w-[140px] absolute z-20 bottom-[-6px] sm:bottom-[-10px] md:bottom-[-14px] lg:-bottom-4 right-[18%] sm:right-[20%] md:right-[22%] lg:right-16"
+                />
               </motion.div>
 
             </div>
+
+            {/* FIXED BUTTON POSITION */}
+            <div className="mt-6">
+              <button className="w-full py-4 rounded-xl bg-green-600 text-white font-semibold text-base hover:bg-green-700 transition">
+                Create Event →
+              </button>
+            </div>
+
           </motion.div>
 
         </div>
@@ -221,7 +246,7 @@ function Feature({ icon, title, desc, color }: any) {
 /* PHONE */
 function PhoneMockup() {
   return (
-    <div className="relative w-[220px] aspect-[9/19]">
+    <div className="relative mx-auto w-[170px] sm:w-[190px] md:w-[200px] lg:w-[220px] aspect-[9/19] md:scale-95 lg:scale-100">
       <div className="absolute inset-0 rounded-[2.6rem] bg-black p-[5px] shadow-2xl">
         <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden bg-white flex flex-col">
 

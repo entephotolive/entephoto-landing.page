@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
-import Hero from "./Hero";
-import About from "./About";
-import SmartFilter from "./SmartFilter";
-import HowItWorks from "./HowItWorks";
-import BuildForEveryone from "./BuildForEveryone"
-import Why from "./Why";
-import Contact from "./Contact";
-import Footer from "./Footer"
+import Navbar from "../../components/ui/pages/Navbar";
+import Hero from "../../components/ui/pages/Hero";
+import About from "../../components/ui/pages/About";
+import SmartFilter from "../../components/ui/pages/SmartFilter";
+import HowItWorks from "../../components/ui/pages/HowItWorks";
+import BuildForEveryone from "../../components/ui/pages/BuildForEveryone";
+import Why from "../../components/ui/pages/Why";
+import Contact from "../../components/ui/pages/Contact";
+import Footer from "../../components/ui/pages/Footer"
 
 export default function Home() {
   const [darkNav, setDarkNav] = useState(true);
