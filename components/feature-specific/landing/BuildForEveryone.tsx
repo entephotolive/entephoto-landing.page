@@ -94,8 +94,8 @@ export default function BuildForEveryone() {
           >
             <div className="pointer-events-none absolute w-[300px] h-[240px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-100/60 to-transparent right-6 top-16"></div>
 
-            <div className="relative z-10 grid lg:grid-cols-2 gap-6 items-center">
-              <div className="text-left">
+            <div className="relative z-10 flex flex-col lg:flex-row gap-6 items-center">
+              <div className="text-left w-full">
                 <motion.div
                   variants={fadeUp}
                   className="flex items-center gap-4 mb-6"
@@ -141,7 +141,7 @@ export default function BuildForEveryone() {
                 </motion.div>
               </div>
 
-              <motion.div variants={scaleIn} className="flex justify-center">
+              <motion.div variants={scaleIn} className="flex justify-center w-full">
                 <AttendeeMockup />
               </motion.div>
             </div>
@@ -164,8 +164,8 @@ export default function BuildForEveryone() {
           >
             <div className="pointer-events-none absolute w-[320px] h-[260px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-100/60 to-transparent left-6 top-16"></div>
 
-            <div className="relative z-10 grid lg:grid-cols-2 gap-6 items-center">
-              <div className="text-left">
+            <div className="relative z-10 flex flex-col lg:flex-row gap-6 items-center">
+              <div className="text-left w-full">
                 <motion.div
                   variants={fadeUp}
                   className="flex items-center gap-4 mb-6"
@@ -213,14 +213,14 @@ export default function BuildForEveryone() {
 
               <motion.div
                 variants={scaleIn}
-                className="relative flex justify-center items-center mt-12 lg:mt-0"
+                className="relative flex justify-center items-center mt-6 lg:mt-0 w-full"
               >
                 <PhotographerMockup />
               </motion.div>
             </div>
 
             {/* FIXED BUTTON POSITION */}
-            <div className="mt-12 mt-auto">
+            <div className="mt-auto pt-8">
               <button 
                 onClick={() => router.push("/photographer/login")} 
                 className="w-full py-4 rounded-xl bg-green-600 text-white font-semibold text-base hover:bg-green-700 transition"

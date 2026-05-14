@@ -169,15 +169,15 @@ export default function SmartFilter() {
             <motion.img
               key={i}
               src={p.src}
-              className="absolute w-24 sm:w-28 md:w-32 h-32 sm:h-36 md:h-40 object-cover rounded-xl shadow-xl"
+              className="absolute hidden md:block md:w-32 md:h-40 object-cover rounded-xl shadow-xl"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 isInView
                   ? {
                       opacity: 1,
-                      x: isMobile ? 0 : p.x,
-                      y: isMobile ? 0 : p.y,
-                      rotate: isMobile ? 0 : p.rotate,
+                      x: p.x,
+                      y: p.y,
+                      rotate: p.rotate,
                     }
                   : {}
               }

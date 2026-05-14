@@ -63,7 +63,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 pt-[env(safe-area-inset-top)] ${
           darkNav
             ? "bg-transparent py-6"
             : "bg-white/80 backdrop-blur-xl border-b border-gray-100 py-4 shadow-sm"

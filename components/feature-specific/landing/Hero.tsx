@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 /* 🔥 WORD-BY-WORD HEADING */
 const headingWords = ["See", "Only", "Your", "Moments."];
 
+import ShuffleWord from "./ShuffleWord";
+
 export default function Hero() {
   const router = useRouter();
   const ref = useRef(null);
@@ -21,7 +23,7 @@ export default function Hero() {
     <section
       id="home"
       ref={ref}
-      className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#faf7ff] via-[#fff5f3] to-[#f3f6ff] pt-28 pb-10"
+      className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden bg-gradient-to-br from-[#faf7ff] via-[#fff5f3] to-[#f3f6ff] pt-[calc(7rem+env(safe-area-inset-top))] pb-10"
     >
       {/* ================= FLOATING ICONS ================= */}
       <div className="absolute inset-0 pointer-events-none z-10">
@@ -41,7 +43,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider"
+            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
           >
             Smart Capture
           </motion.p>
@@ -62,7 +64,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider"
+            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
           >
             Face Recognition
           </motion.p>
@@ -83,7 +85,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
             transition={{ delay: 0.35 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider"
+            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
           >
             Only Your Photos
           </motion.p>
@@ -104,7 +106,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider"
+            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
           >
             Private & Secure
           </motion.p>
@@ -115,37 +117,12 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-6 text-center relative z-20">
         {/* 🔥 PREMIUM HEADING */}
         <motion.h1
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="text-5xl md:text-7xl font-black text-[#1a1a2e] leading-tight"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl sm:text-5xl md:text-7xl font-black text-[#1a1a2e] leading-[1.1] sm:leading-tight"
         >
-          {headingWords.map((word, i) => (
-            <motion.span
-              key={i}
-              className="inline-block mr-3"
-              variants={{
-                hidden: { opacity: 0, y: 60 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  scale: [0.95, 1.05, 1],
-                  transition: {
-                    delay: i * 0.15,
-                    duration: 0.6,
-                    ease: "easeOut",
-                  },
-                },
-              }}
-            >
-              {word === "Moments." ? (
-                <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
-                  {word}
-                </span>
-              ) : (
-                word
-              )}
-            </motion.span>
-          ))}
+          See Only Your <br className="sm:hidden" /><ShuffleWord />.
         </motion.h1>
 
         {/* PARAGRAPH */}

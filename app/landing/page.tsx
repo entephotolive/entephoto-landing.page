@@ -9,27 +9,22 @@ import BuildForEveryone from "@/components/feature-specific/landing/BuildForEver
 import Why from "@/components/feature-specific/landing/Why";
 import Contact from "@/components/feature-specific/landing/Contact";
 import Footer from "@/components/feature-specific/landing/Footer";
+import SmoothScrollProvider from "@/components/feature-specific/landing/SmoothScrollProvider";
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-
-      <Hero />
-
-      <About />
-
-      <SmartFilter />
-
-      <BuildForEveryone />
-
-      <HowItWorks />
-
-      <Why />
-
-      <Contact />
-
-      <Footer />
-    </main>
+    <SmoothScrollProvider>
+      <main>
+        <Navbar />
+        <Hero />
+        <About />
+        <SmartFilter />
+        <BuildForEveryone />
+        <HowItWorks />
+        <Why />
+        <Contact />
+        <Footer />
+      </main>
+    </SmoothScrollProvider>
   );
 }
