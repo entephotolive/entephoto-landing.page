@@ -5,10 +5,30 @@ import { useEffect, useRef, useState } from "react";
 
 /* FLOATING IMAGES */
 const floatingPhotos = [
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400", x: -180, y: -100, rotate: -12 },
-  { src: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=400", x: 160, y: -80, rotate: 10 },
-  { src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400", x: -150, y: 140, rotate: 8 },
-  { src: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400", x: 170, y: 130, rotate: -8 },
+  {
+    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400",
+    x: -180,
+    y: -100,
+    rotate: -12,
+  },
+  {
+    src: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=400",
+    x: 160,
+    y: -80,
+    rotate: 10,
+  },
+  {
+    src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400",
+    x: -150,
+    y: 140,
+    rotate: 8,
+  },
+  {
+    src: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400",
+    x: 170,
+    y: 130,
+    rotate: -8,
+  },
 ];
 
 const incomingPhotos = [
@@ -70,10 +90,8 @@ export default function SmartFilter() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.05))]" />
 
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-
         {/* LEFT */}
         <div>
-
           {/* TAG */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -102,16 +120,25 @@ export default function SmartFilter() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             className="mt-6 text-sm md:text-base text-[#6b7280] max-w-md"
           >
-            Your photos appear the moment you need them. No searching,
-            no clutter — just your moments.
+            Your photos appear the moment you need them. No searching, no
+            clutter — just your moments.
           </motion.p>
 
           {/* FEATURES */}
           <div className="mt-10 space-y-6 max-w-md">
             {[
-              { title: "Instant results", desc: "Photos surface instantly with zero effort." },
-              { title: "Only your photos", desc: "AI filters out everything unrelated." },
-              { title: "Private by design", desc: "Your data stays secure and fully yours." },
+              {
+                title: "Instant results",
+                desc: "Photos surface instantly with zero effort.",
+              },
+              {
+                title: "Only your photos",
+                desc: "AI filters out everything unrelated.",
+              },
+              {
+                title: "Private by design",
+                desc: "Your data stays secure and fully yours.",
+              },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -125,9 +152,7 @@ export default function SmartFilter() {
                   <h4 className="text-base md:text-[17px] font-bold text-[#1f2937]">
                     {item.title}
                   </h4>
-                  <p className="text-sm text-[#6b7280] mt-1">
-                    {item.desc}
-                  </p>
+                  <p className="text-sm text-[#6b7280] mt-1">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -136,9 +161,8 @@ export default function SmartFilter() {
 
         {/* RIGHT */}
         <div className="relative flex justify-center items-center">
-
           {/* glow */}
-          <div className="absolute w-[220px] sm:w-[280px] md:w-[340px] h-[220px] sm:h-[280px] md:h-[340px] bg-[#8b5e3c]/10 blur-[100px] rounded-full" />
+          <div className="absolute w-[220px] sm:w-[280px] md:w-[340px] h-[220px] sm:h-[280px] md:h-[340px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#8b5e3c]/20 to-transparent rounded-full" />
 
           {/* FLOATING IMAGES */}
           {floatingPhotos.map((p, i) => (
@@ -163,9 +187,7 @@ export default function SmartFilter() {
 
           {/* PHONE */}
           <div className="relative w-[200px] sm:w-[220px] md:w-[230px] h-[420px] sm:h-[440px] md:h-[460px] bg-black rounded-[40px] border-[6px] border-black shadow-xl overflow-hidden">
-
             <div className="w-full h-full bg-white flex items-center justify-center relative overflow-hidden">
-
               {/* SCANNING */}
               <AnimatePresence>
                 {stage === "scanning" &&
@@ -223,10 +245,8 @@ export default function SmartFilter() {
                   ))}
                 </div>
               )}
-
             </div>
           </div>
-
         </div>
       </div>
     </section>

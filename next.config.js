@@ -1,4 +1,6 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {};
+module.exports = nextConfig;   // ❌ overwritten below
 
-module.exports = nextConfig;
+module.exports = {
+  allowedDevOrigins: ['10.169.72.166'],
+};
