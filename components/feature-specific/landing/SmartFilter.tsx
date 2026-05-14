@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -43,41 +44,30 @@ const resultPhotos = [
   "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
 ];
 
+type SmartFilterStage = "idle" | "scanning" | "loading" | "success" | "done";
+
 export default function SmartFilter() {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.5, once: false });
 
-  const [stage, setStage] = useState<
-    "idle" | "scanning" | "loading" | "success" | "done"
-  >("idle");
-
-  const [isMobile, setIsMobile] = useState(false);
+  const [stage, setStage] = useState<SmartFilterStage>("idle");
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  useEffect(() => {
-    let t1: NodeJS.Timeout;
-    let t2: NodeJS.Timeout;
-    let t3: NodeJS.Timeout;
-
-    if (isInView) {
-      setStage("idle");
-
-      setTimeout(() => {
-        setStage("scanning");
-
-        t1 = setTimeout(() => setStage("loading"), 1300);
-        t2 = setTimeout(() => setStage("success"), 3600);
-        t3 = setTimeout(() => setStage("done"), 4200);
-      }, 100);
+    if (!isInView) {
+      const resetTimer = window.setTimeout(() => setStage("idle"), 0);
+      return () => window.clearTimeout(resetTimer);
     }
 
+    const timers = [
+      window.setTimeout(() => setStage("idle"), 0),
+      window.setTimeout(() => setStage("scanning"), 100),
+      window.setTimeout(() => setStage("loading"), 1400),
+      window.setTimeout(() => setStage("success"), 3700),
+      window.setTimeout(() => setStage("done"), 4300),
+    ];
+
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearTimeout(t3);
+      timers.forEach((timer) => window.clearTimeout(timer));
     };
   }, [isInView]);
 
@@ -166,10 +156,9 @@ export default function SmartFilter() {
 
           {/* FLOATING IMAGES */}
           {floatingPhotos.map((p, i) => (
-            <motion.img
+            <motion.div
               key={i}
-              src={p.src}
-              className="absolute hidden md:block md:w-32 md:h-40 object-cover rounded-xl shadow-xl"
+              className="absolute hidden md:block md:w-32 md:h-40 rounded-xl shadow-xl overflow-hidden"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
                 isInView
@@ -182,7 +171,15 @@ export default function SmartFilter() {
                   : {}
               }
               transition={{ delay: i * 0.2 }}
-            />
+            >
+              <Image
+                src={p.src}
+                alt={`Floating gallery preview ${i + 1}`}
+                fill
+                sizes="128px"
+                className="object-cover"
+              />
+            </motion.div>
           ))}
 
           {/* PHONE */}
@@ -192,14 +189,21 @@ export default function SmartFilter() {
               <AnimatePresence>
                 {stage === "scanning" &&
                   incomingPhotos.map((img, i) => (
-                    <motion.img
+                    <motion.div
                       key={i}
-                      src={img}
-                      className="absolute w-14 h-14 sm:w-16 sm:h-16 rounded-md object-cover"
+                      className="absolute w-14 h-14 sm:w-16 sm:h-16 rounded-md overflow-hidden"
                       initial={{ x: i % 2 === 0 ? -200 : 200, opacity: 0 }}
                       animate={{ x: 0, scale: 0.5, opacity: 1 }}
                       exit={{ opacity: 0 }}
-                    />
+                    >
+                      <Image
+                        src={img}
+                        alt={`Scanned face ${i + 1}`}
+                        fill
+                        sizes="64px"
+                        className="object-cover"
+                      />
+                    </motion.div>
                   ))}
               </AnimatePresence>
 
@@ -207,9 +211,12 @@ export default function SmartFilter() {
               {stage === "loading" && (
                 <div className="flex flex-col items-center gap-4">
                   <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400"
-                      className="w-full h-full object-cover"
+                      alt="Face scanning preview"
+                      fill
+                      sizes="64px"
+                      className="object-cover"
                     />
                     <motion.div
                       className="absolute inset-0 border-4 border-[#8b5e3c] rounded-full"
@@ -235,13 +242,20 @@ export default function SmartFilter() {
               {stage === "done" && (
                 <div className="p-3 w-full space-y-3">
                   {resultPhotos.map((img, i) => (
-                    <motion.img
+                    <motion.div
                       key={i}
-                      src={img}
-                      className="rounded-xl w-full object-cover"
+                      className="relative rounded-xl w-full h-32 overflow-hidden"
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
-                    />
+                    >
+                      <Image
+                        src={img}
+                        alt={`Matched photo ${i + 1}`}
+                        fill
+                        sizes="200px"
+                        className="object-cover"
+                      />
+                    </motion.div>
                   ))}
                 </div>
               )}

@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useInView } from "framer-motion"
 import { QrCode, ScanFace, Sparkles, ImageIcon } from "lucide-react"
@@ -114,16 +115,22 @@ export default function HowItWorks() {
               <div className="relative w-full h-full bg-white rounded-[36px] overflow-hidden">
 
                 <AnimatePresence mode="wait">
-                  <motion.img
+                  <motion.div
                     key={steps[active].image}
-                    src={steps[active].image}
-                    alt="screen"
-                    className="w-full h-full object-cover"
+                    className="relative w-full h-full"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 0.5 }}
-                  />
+                  >
+                    <Image
+                      src={steps[active].image}
+                      alt={`${steps[active].title} preview`}
+                      fill
+                      sizes="(max-width: 768px) 230px, 260px"
+                      className="object-cover"
+                    />
+                  </motion.div>
                 </AnimatePresence>
 
               </div>

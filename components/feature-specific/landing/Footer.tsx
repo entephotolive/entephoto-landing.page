@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
-
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
@@ -11,10 +11,12 @@ export default function Footer() {
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <div className="w-12 h-8 rounded-full overflow-hidden bg-white border border-gray-100 shadow-sm flex items-center justify-center">
-            <img
+            <Image
               src="/logo.png"
-              className="w-full h-full object-cover"
               alt="Logo"
+              width={48}
+              height={32}
+              className="w-full h-full object-cover"
             />
           </div>
           <p className="text-gray-700 text-sm">

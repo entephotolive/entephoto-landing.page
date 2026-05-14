@@ -16,20 +16,26 @@ export default function ShuffleWord() {
   }, []);
 
   return (
-    <span className="inline-block relative min-w-[280px] text-left">
+    <span className="inline-block relative">
       <AnimatePresence mode="wait">
-        <motion.span
+        <span
           key={idx}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 top-0 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+          className="absolute top-0 left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 whitespace-nowrap"
         >
-          {WORDS[idx]}
-        </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="block bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent"
+          >
+            {WORDS[idx]}
+          </motion.span>
+        </span>
       </AnimatePresence>
-      <span className="opacity-0">{WORDS[0]}</span>
+      <span className="opacity-0 pointer-events-none select-none">
+        Memories
+      </span>
     </span>
   );
 }

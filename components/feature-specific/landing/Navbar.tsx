@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -11,6 +12,26 @@ const links = [
   { label: "Why Ente?", href: "#why" },
   { label: "Get in touch", href: "#contact" },
 ];
+
+function LogoMark({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={
+        compact
+          ? "w-12 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center"
+          : "w-14 h-9 rounded-full overflow-hidden bg-white/60 backdrop-blur-sm border border-white/40 shadow-sm flex items-center justify-center"
+      }
+    >
+      <Image
+        src="/logo.png"
+        alt="Ente Photo logo"
+        width={compact ? 48 : 56}
+        height={compact ? 32 : 36}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [darkNav, setDarkNav] = useState(true);
@@ -63,7 +84,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 pt-[env(safe-area-inset-top)] ${
+        className={`fixed top- left-0 w-full z-50 transition-all duration-500 ${
           darkNav
             ? "bg-transparent py-6"
             : "bg-white/80 backdrop-blur-xl border-b border-gray-100 py-4 shadow-sm"
@@ -75,13 +96,7 @@ export default function Navbar() {
             href="#home"
             className="flex items-center gap-3 font-extrabold text-2xl tracking-tighter text-[#1a1a2e] transition-transform hover:scale-105"
           >
-            <div className="w-14 h-9 rounded-full overflow-hidden bg-white/60 backdrop-blur-sm border border-white/40 shadow-sm flex items-center justify-center">
-              <img
-                src="/logo.png"
-                className="w-full h-full object-cover"
-                alt="Logo"
-              />
-            </div>
+            <LogoMark />
             <span className="hidden sm:inline">Ente Photo</span>
           </a>
 
@@ -155,13 +170,7 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="flex items-center gap-3 font-extrabold text-2xl tracking-tighter text-[#1a1a2e]"
               >
-                <div className="w-12 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
-                  <img
-                    src="/logo.png"
-                    className="w-full h-full object-cover"
-                    alt="Logo"
-                  />
-                </div>
+                <LogoMark compact />
                 <span>Ente Photo</span>
               </a>
 

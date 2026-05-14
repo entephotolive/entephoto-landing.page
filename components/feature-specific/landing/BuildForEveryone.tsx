@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   User,
   Camera,
@@ -42,6 +43,22 @@ const container: Variants = {
       staggerChildren: 0.15,
     },
   },
+};
+
+const attendeePhotos = [
+  "/phone/image.1.avif",
+  "/phone/image.2.jpeg",
+  "/phone/image.3.jpg",
+  "/phone/images.4.webp",
+  "/phone/images.5.jpg",
+  "/phone/images.6.jpeg",
+] as const;
+
+type FeatureProps = {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  color: "blue" | "green";
 };
 
 /* ================= MAIN ================= */
@@ -266,7 +283,7 @@ export default function BuildForEveryone() {
 }
 
 /* FEATURE */
-function Feature({ icon, title, desc, color }: any) {
+function Feature({ icon, title, desc, color }: FeatureProps) {
   const colorClass = color === "green" ? "text-green-500" : "text-blue-500";
 
   return (
@@ -297,44 +314,16 @@ function DeviceMockup({ children }: { children: React.ReactNode }) {
 function AttendeeMockup() {
   return (
     <DeviceMockup>
-      <div className="flex flex-col h-full pt-5 px-2 pb-2 bg-white">
-        <p className="text-[10px] text-center text-gray-500 mb-2">
-          Annual Day Event
-        </p>
-
-        <div className="grid grid-cols-2 gap-2 flex-1">
-          <img
-            src="/phone/image.1.avif"
-            className="w-full h-full rounded-lg object-cover"
-          />
-          <img
-            src="/phone/image.2.jpeg"
-            className="w-full h-full rounded-lg object-cover"
-          />
-          <img
-            src="/phone/image.3.jpg"
-            className="w-full h-full rounded-lg object-cover"
-          />
-          <img
-            src="/phone/images.4.webp"
-            className="w-full h-full rounded-lg object-cover"
-          />
-          <img
-            src="/phone/images.5.jpg"
-            className="w-full h-full rounded-lg object-cover"
-          />
-          <img
-            src="/phone/images.6.jpeg"
-            className="w-full h-full rounded-lg object-cover"
-          />
-        </div>
-
-        <div className="flex justify-between text-[9px] text-gray-400 mt-2 pt-1">
-          <span>Photos</span>
-          <span>Search</span>
-          <span>Events</span>
-          <span>Account</span>
-        </div>
+      <div className="relative w-full h-full bg-white">
+        <Image
+          src="/landing/attendee-mockup-retina.png"
+          alt="Premium Attendee Experience"
+          fill
+          sizes="(max-width: 768px) 170px, 220px"
+          className="object-cover"
+          priority
+          unoptimized
+        />
       </div>
     </DeviceMockup>
   );
@@ -345,10 +334,14 @@ function PhotographerMockup() {
   return (
     <DeviceMockup>
       <div className="flex flex-col h-full bg-gray-900">
-        <img
+        <Image
           src="/images/photographer-mobile.png"
-          className="w-full h-full object-cover"
           alt="Photographer Dashboard"
+          width={440}
+          height={880}
+          className="w-full h-full object-cover"
+          priority
+          unoptimized
         />
       </div>
     </DeviceMockup>

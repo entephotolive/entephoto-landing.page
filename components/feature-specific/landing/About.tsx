@@ -3,6 +3,24 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, Sparkles, Lock } from "lucide-react";
 
+const features = [
+  {
+    icon: ShieldCheck,
+    title: "Private by design",
+    description: "Only you can access your photos.",
+  },
+  {
+    icon: Sparkles,
+    title: "Simple experience",
+    description: "Clean interface focused on your moments.",
+  },
+  {
+    icon: Lock,
+    title: "Secure storage",
+    description: "Your memories stay safe and protected.",
+  },
+] as const;
+
 export default function About() {
   return (
     <section id="features" className="relative py-28 px-6 bg-[#f7f7f9] overflow-hidden">
@@ -50,49 +68,17 @@ export default function About() {
 
         
         <div className="grid md:grid-cols-3 gap-6 mt-14">
-
-          
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl p-6 shadow-sm"
-          >
-            <ShieldCheck className="mb-4 text-gray-800" size={28} />
-            <h3 className="font-semibold text-lg text-gray-900">
-              Private by design
-            </h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Only you can access your photos.
-            </p>
-          </motion.div>
-
-          
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl p-6 shadow-sm"
-          >
-            <Sparkles className="mb-4 text-gray-800" size={28} />
-            <h3 className="font-semibold text-lg text-gray-900">
-              Simple experience
-            </h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Clean interface focused on your moments.
-            </p>
-          </motion.div>
-
-          
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl p-6 shadow-sm"
-          >
-            <Lock className="mb-4 text-gray-800" size={28} />
-            <h3 className="font-semibold text-lg text-gray-900">
-              Secure storage
-            </h3>
-            <p className="text-sm text-gray-600 mt-2">
-              Your memories stay safe and protected.
-            </p>
-          </motion.div>
-
+          {features.map(({ icon: Icon, title, description }) => (
+            <motion.div
+              key={title}
+              whileHover={{ y: -6 }}
+              className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl p-6 shadow-sm"
+            >
+              <Icon className="mb-4 text-gray-800" size={28} />
+              <h3 className="font-semibold text-lg text-gray-900">{title}</h3>
+              <p className="text-sm text-gray-600 mt-2">{description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

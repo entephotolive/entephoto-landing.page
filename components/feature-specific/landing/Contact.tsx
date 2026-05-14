@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
-import { Send, Shield, MessageSquare, Bug } from "lucide-react";
+import { Shield } from "lucide-react";
 
 /* ===== ANIMATION ===== */
 

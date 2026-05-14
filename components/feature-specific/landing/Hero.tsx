@@ -1,12 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Camera, ImageIcon, ScanFace, ShieldCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
-
-/* 🔥 WORD-BY-WORD HEADING */
-const headingWords = ["See", "Only", "Your", "Moments."];
 
 import ShuffleWord from "./ShuffleWord";
 
@@ -29,87 +27,111 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none z-10">
         {/* LEFT TOP */}
         <motion.div
-          className="absolute left-[8%] top-[30%] flex flex-col items-center opacity-80"
+          className="absolute left-[2%] top-[15%] sm:left-[2%] sm:top-[20%] md:left-[8%] md:top-[30%] flex flex-col items-center opacity-80 scale-75 sm:scale-75 md:scale-100 origin-left md:origin-center"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-pink-400 text-white flex items-center justify-center shadow-lg">
-            <Camera size={20} />
-          </div>
-
-          {/* 🔥 H4 animation */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
+          <motion.div
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
           >
-            Smart Capture
-          </motion.p>
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-pink-400 text-white flex items-center justify-center shadow-lg">
+              <Camera size={20} />
+            </div>
+
+            {/* 🔥 H4 animation */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider text-center "
+            >
+              Smart Capture
+            </motion.p>
+          </motion.div>
         </motion.div>
 
         {/* LEFT BOTTOM */}
         <motion.div
-          className="absolute left-[10%] top-[55%] flex flex-col items-center opacity-80"
+          className="absolute left-[2%] top-[55%] sm:left-[5%] md:left-[10%] md:top-[55%] flex flex-col items-center opacity-80 scale-75 sm:scale-75 md:scale-100 origin-left md:origin-center"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shadow-lg">
-            <ScanFace size={20} />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 3.5, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
           >
-            Face Recognition
-          </motion.p>
+            <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shadow-lg">
+              <ScanFace size={20} />
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider text-center "
+            >
+              Face Recognition
+            </motion.p>
+          </motion.div>
         </motion.div>
 
         {/* RIGHT TOP */}
         <motion.div
-          className="absolute right-[8%] top-[30%] flex flex-col items-center opacity-80"
+          className="absolute right-[2%] top-[20%] sm:right-[2%] sm:top-[25%] md:right-[8%] md:top-[30%] flex flex-col items-center opacity-80 scale-75 sm:scale-75 md:scale-100 origin-right md:origin-center"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
-          <div className="w-12 h-12 rounded-xl bg-white text-purple-500 flex items-center justify-center shadow-lg">
-            <ImageIcon size={20} />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
-            transition={{ delay: 0.35 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4.5, delay: 0.2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
           >
-            Only Your Photos
-          </motion.p>
+            <div className="w-12 h-12 rounded-xl bg-white text-purple-500 flex items-center justify-center shadow-lg">
+              <ImageIcon size={20} />
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+              transition={{ delay: 0.35 }}
+              className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider text-center "
+            >
+              Only Your Photos
+            </motion.p>
+          </motion.div>
         </motion.div>
 
         {/* RIGHT BOTTOM */}
         <motion.div
-          className="absolute right-[10%] top-[55%] flex flex-col items-center opacity-80"
+          className="absolute right-[2%] top-[60%] sm:right-[5%] md:right-[10%] md:top-[55%] flex flex-col items-center opacity-80 scale-75 sm:scale-75 md:scale-100 origin-right md:origin-center"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="w-12 h-12 rounded-xl bg-white text-pink-500 flex items-center justify-center shadow-lg">
-            <ShieldCheck size={20} />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider hidden sm:block"
+          <motion.div
+            animate={{ y: [0, -18, 0] }}
+            transition={{ duration: 3.8, delay: 0.8, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center"
           >
-            Private & Secure
-          </motion.p>
+            <div className="w-12 h-12 rounded-xl bg-white text-pink-500 flex items-center justify-center shadow-lg">
+              <ShieldCheck size={20} />
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-[10px] mt-2 text-gray-400 font-bold uppercase tracking-wider text-center "
+            >
+              Private & Secure
+            </motion.p>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -120,9 +142,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl sm:text-5xl md:text-7xl font-black text-[#1a1a2e] leading-[1.1] sm:leading-tight"
+          className="text-5xl sm:text-6xl md:text-7xl font-black font-heading text-[#1a1a2e] leading-[1.1] sm:leading-tight"
         >
-          See Only Your <br className="sm:hidden" /><ShuffleWord />.
+          See Only Your <br className="sm:hidden" /><ShuffleWord />
         </motion.h1>
 
         {/* PARAGRAPH */}
@@ -143,9 +165,10 @@ export default function Hero() {
           transition={{ delay: 0.8 }}
           className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
         >
-          <button 
+          <button
             onClick={() => router.push("/qr-scanner")}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full text-white font-semibold text-sm sm:text-base bg-gradient-to-r from-orange-400 to-purple-600 shadow-xl hover:scale-105 transition">
+            className="w-44 sm:w-auto px-6 py-3 rounded-full text-white font-semibold text-sm sm:text-base bg-gradient-to-r from-orange-400 to-purple-600 shadow-xl hover:scale-105 transition"
+          >
             Try It Now →
           </button>
 
@@ -155,7 +178,7 @@ export default function Hero() {
                 .getElementById("features")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-purple-100 bg-white text-gray-700 font-semibold text-sm sm:text-base hover:bg-gray-50 transition"
+            className="w-44 sm:w-auto px-6 py-3 rounded-full border border-purple-100 bg-white text-gray-700 font-semibold text-sm sm:text-base hover:bg-gray-50 transition"
           >
             Learn More
           </button>
@@ -165,10 +188,11 @@ export default function Hero() {
       {/* ================= PHOTO STRIP ================= */}
       <div className="mt-16 flex justify-center gap-6 px-6 relative z-20">
         {[1, 2, 3, 4].map((_, i) => (
-          <motion.img
+          <motion.div
             key={i}
-            src={`https://picsum.photos/seed/${i}/500/350`}
-            className="w-44 md:w-56 rounded-xl shadow-2xl border border-white"
+            className={`relative shrink-0 w-44 md:w-56 aspect-[10/7] rounded-xl shadow-2xl border border-white overflow-hidden ${
+              i >= 2 ? "hidden md:block" : ""
+            }`}
             style={{
               rotate: i % 2 === 0 ? -8 + i : 8 - i,
             }}
@@ -177,7 +201,15 @@ export default function Hero() {
               isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 80 }
             }
             transition={{ delay: i * 0.2, duration: 0.6 }}
-          />
+          >
+            <Image
+              src={`https://picsum.photos/seed/${i}/500/350`}
+              alt={`Event preview ${i + 1}`}
+              fill
+              sizes="(max-width: 768px) 176px, 224px"
+              className="object-cover"
+            />
+          </motion.div>
         ))}
       </div>
 

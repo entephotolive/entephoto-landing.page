@@ -9,7 +9,7 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
-  allowedDevOrigins: ['10.169.72.166'],
+  allowedDevOrigins: ['10.169.72.166','10.209.54.166'],
 };
 
 module.exports = nextConfig;
