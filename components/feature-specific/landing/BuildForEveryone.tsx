@@ -45,14 +45,7 @@ const container: Variants = {
   },
 };
 
-const attendeePhotos = [
-  "/phone/image.1.avif",
-  "/phone/image.2.jpeg",
-  "/phone/image.3.jpg",
-  "/phone/images.4.webp",
-  "/phone/images.5.jpg",
-  "/phone/images.6.jpeg",
-] as const;
+
 
 type FeatureProps = {
   icon: React.ReactNode;
