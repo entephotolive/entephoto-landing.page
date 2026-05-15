@@ -17,10 +17,19 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://entephoto.co.in"),
-  title: "Entephoto | Capture Your Best Moments",
+  title: {
+    default: "Entephoto | Events Live Sharing & AI Photo Delivery",
+    template: "%s | Entephoto",
+  },
   description:
-    "Entephoto is the premier platform for event photography, seamless memory sharing, and professional photo management.",
+    "Entephoto is the premier platform for events live sharing, AI face recognition photo delivery, seamless memory sharing, and professional event photography management.",
   keywords: [
+    "events live sharing",
+    "live photo sharing",
+    "AI photo delivery",
+    "instant event photos",
+    "QR code event sharing",
+    "face recognition photo sharing",
     "photography",
     "event photography",
     "photo sharing",
@@ -29,13 +38,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Entephoto" }],
   openGraph: {
-    title: "Entephoto | Capture Your Best Moments",
-    description: "Premium platform for event photography and memory sharing.",
+    title: "Entephoto | Events Live Sharing & AI Photo Delivery",
+    description: "Premium platform for events live sharing, AI face recognition photo delivery, and seamless memory sharing.",
     url: "https://entephoto.co.in",
     siteName: "Entephoto",
     images: [
       {
-        url: "/og-image.png", // Ensure you add an og-image.jpg in your public folder!
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Entephoto Preview Image",
@@ -46,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Entephoto | Capture Your Best Moments",
-    description: "Premium platform for event photography and memory sharing.",
+    title: "Entephoto | Events Live Sharing & AI Photo Delivery",
+    description: "Premium platform for events live sharing, AI face recognition photo delivery, and seamless memory sharing.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -71,6 +80,47 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(jakarta.variable, outfit.variable)}>
       <body className="font-sans antialiased overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://entephoto.co.in/#website",
+                  "url": "https://entephoto.co.in/",
+                  "name": "Entephoto",
+                  "description": "Events live sharing and AI photo delivery platform",
+                  "publisher": {
+                    "@id": "https://entephoto.co.in/#organization",
+                  },
+                  "potentialAction": [
+                    {
+                      "@type": "SearchAction",
+                      "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://entephoto.co.in/search?q={search_term_string}",
+                      },
+                      "query-input": "required name=search_term_string",
+                    },
+                  ],
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://entephoto.co.in/#organization",
+                  "name": "Entephoto",
+                  "url": "https://entephoto.co.in/",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://entephoto.co.in/logo.png",
+                  },
+                  "description": "Entephoto provides an advanced event photography platform with live photo sharing, AI-powered face recognition photo delivery, and secure cloud storage.",
+                },
+              ],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>

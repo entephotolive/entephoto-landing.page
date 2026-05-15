@@ -154,8 +154,7 @@ export default function Hero() {
           transition={{ delay: 0.6 }}
           className="mt-6 text-gray-500 text-lg max-w-xl mx-auto"
         >
-          Scan your face and instantly access only your photos from events. No
-          searching. No confusion.
+          The ultimate platform for <strong className="text-gray-700 font-semibold">events live sharing</strong>. Scan your face and instantly access only your photos from any event. No searching. No confusion.
         </motion.p>
 
         {/* BUTTONS */}
