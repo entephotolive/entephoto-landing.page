@@ -16,7 +16,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://entephoto.co.in"),
+  metadataBase: new URL("https://www.entephoto.co.in/"),
   title: {
     default: "Entephoto | Events Live Sharing & AI Photo Delivery",
     template: "%s | Entephoto",
@@ -39,8 +39,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Entephoto" }],
   openGraph: {
     title: "Entephoto | Events Live Sharing & AI Photo Delivery",
-    description: "Premium platform for events live sharing, AI face recognition photo delivery, and seamless memory sharing.",
-    url: "https://entephoto.co.in",
+    description:
+      "Premium platform for events live sharing, AI face recognition photo delivery, and seamless memory sharing.",
+    url: "https://www.entephoto.co.in",
     siteName: "Entephoto",
     images: [
       {
@@ -56,8 +57,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Entephoto | Events Live Sharing & AI Photo Delivery",
-    description: "Premium platform for events live sharing, AI face recognition photo delivery, and seamless memory sharing.",
+    description:
+      "Premium platform for events live sharing, AI face recognition photo delivery, and seamless memory sharing.",
     images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   robots: {
     index: true,
@@ -88,19 +95,21 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "WebSite",
-                  "@id": "https://entephoto.co.in/#website",
-                  "url": "https://entephoto.co.in/",
-                  "name": "Entephoto",
-                  "description": "Events live sharing and AI photo delivery platform",
-                  "publisher": {
-                    "@id": "https://entephoto.co.in/#organization",
+                  "@id": "https://www.entephoto.co.in/#website",
+                  url: "https://www.entephoto.co.in/",
+                  name: "Entephoto",
+                  description:
+                    "Events live sharing and AI photo delivery platform",
+                  publisher: {
+                    "@id": "https://www.entephoto.co.in/#organization",
                   },
-                  "potentialAction": [
+                  potentialAction: [
                     {
                       "@type": "SearchAction",
-                      "target": {
+                      target: {
                         "@type": "EntryPoint",
-                        "urlTemplate": "https://entephoto.co.in/search?q={search_term_string}",
+                        urlTemplate:
+                          "https://www.entephoto.co.in/search?q={search_term_string}",
                       },
                       "query-input": "required name=search_term_string",
                     },
@@ -108,14 +117,15 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Organization",
-                  "@id": "https://entephoto.co.in/#organization",
-                  "name": "Entephoto",
-                  "url": "https://entephoto.co.in/",
-                  "logo": {
+                  "@id": "https://www.entephoto.co.in/#organization",
+                  name: "Entephoto",
+                  url: "https://www.entephoto.co.in/",
+                  logo: {
                     "@type": "ImageObject",
-                    "url": "https://entephoto.co.in/logo.png",
+                    url: "https://www.entephoto.co.in/favicon.png",
                   },
-                  "description": "Entephoto provides an advanced event photography platform with live photo sharing, AI-powered face recognition photo delivery, and secure cloud storage.",
+                  description:
+                    "Entephoto provides an advanced event photography platform with live photo sharing, AI-powered face recognition photo delivery, and secure cloud storage.",
                 },
               ],
             }),

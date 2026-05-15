@@ -7,6 +7,7 @@ import { Camera, ImageIcon, ScanFace, ShieldCheck } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import ShuffleWord from "./ShuffleWord";
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 export default function Hero() {
   const router = useRouter();
@@ -165,7 +166,7 @@ export default function Hero() {
           className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
         >
           <button
-            onClick={() => router.push("/qr-scanner")}
+            onClick={() => window.location.href = `${appUrl}/qr-scanner`}
             className="w-44 sm:w-auto px-6 py-3 rounded-full text-white font-semibold text-sm sm:text-base bg-gradient-to-r from-orange-400 to-purple-600 shadow-xl hover:scale-105 transition"
           >
             Try It Now →

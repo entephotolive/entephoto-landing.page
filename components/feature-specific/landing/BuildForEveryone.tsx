@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
 /* ================= ANIMATIONS ================= */
 
@@ -158,7 +159,7 @@ export default function BuildForEveryone() {
 
             <div className="mt-6">
               <button 
-              onClick={() => router.push("/qr-scanner")}
+              onClick={() => window.location.href = `${appUrl}/qr-scanner`}
               className="w-full py-4 rounded-xl bg-blue-600 text-white font-semibold text-base hover:bg-blue-700 transition">
                 Explore Events →
               </button>
@@ -232,7 +233,7 @@ export default function BuildForEveryone() {
             {/* FIXED BUTTON POSITION */}
             <div className="mt-auto pt-8">
               <button 
-                onClick={() => router.push("/photographer/login")} 
+                onClick={() => window.location.href = `${appUrl}/photographer/login`}
                 className="w-full py-4 rounded-xl bg-green-600 text-white font-semibold text-base hover:bg-green-700 transition"
               >
                 Create Event →
