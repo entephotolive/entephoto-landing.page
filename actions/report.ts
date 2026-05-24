@@ -20,6 +20,7 @@ export async function submitReport(prevState: any, formData: FormData) {
       email: formData.get("email"),
       message: formData.get("message"),
     };
+    
 
     const validatedData = formSchema.parse(data);
 
