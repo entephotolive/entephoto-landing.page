@@ -28,16 +28,18 @@ export async function submitReport(prevState: any, formData: FormData) {
 
     const newReport = await Report.create(validatedData);
 
-    // Send email notification silently in the background
-    // We catch the error so it doesn't fail the user submission if email fails
-    sendNotificationEmail(validatedData).catch((err) => {
-      console.error("Failed to send email notification in background:", err);
-    });
-
-    // Send auto-reply to the user silently in the background
-    sendAutoReplyEmail(validatedData).catch((err) => {
-      console.error("Failed to send auto-reply email in background:", err);
-    });
+    // In Vercel Serverless Functions, we MUST await async tasks before returning,
+    // otherwise the execution environment freezes and kills the network connections,
+    // causing "Unexpected socket close" or "ETIMEDOUT".
+    // We use Promise.allSettled so that if an email fails, it still returns success to the user.
+    await Promise.allSettled([
+      sendNotificationEmail(validatedData).catch((err) => {
+        console.error("Failed to send email notification:", err);
+      }),
+      sendAutoReplyEmail(validatedData).catch((err) => {
+        console.error("Failed to send auto-reply email:", err);
+      })
+    ]);
 
     return { success: true, message: "Thank you! Your submission has been received." };
   } catch (error: any) {
