@@ -6,8 +6,7 @@ import { sendNotificationEmail, sendAutoReplyEmail } from "@/lib/email";
 import { z } from "zod";
 
 const formSchema = z.object({
-  type: z.enum(["bug", "feedback"]
-  ),
+  type: z.enum(["bug", "feedback"]),
   name: z.string().min(2, "Name must be at least 2 characters.").max(100),
   email: z.string().email("Please provide a valid email address."),
   message: z.string().min(10, "Message must be at least 10 characters.").max(2000),
@@ -17,7 +16,7 @@ export async function submitReport(prevState: any, formData: FormData) {
   try {
     const data = {
       type: formData.get("type"),
-      name: formData.get("name"),
+      name: formData.get("name"), 
       email: formData.get("email"),
       message: formData.get("message"),
     };
