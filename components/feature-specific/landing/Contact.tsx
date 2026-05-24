@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, Variants } from "framer-motion";
-import { Shield } from "lucide-react";
+import { Shield, Loader2 } from "lucide-react";
+import { submitReport } from "@/actions/report";
+import { toast } from "sonner";
 
 /* ===== ANIMATION ===== */
 
@@ -24,6 +26,28 @@ const reveal: Variants = {
 
 export default function Contact() {
   const [tab, setTab] = useState<"feedback" | "bug">("bug");
+  const [isPending, setIsPending] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (formData: FormData) => {
+    setIsPending(true);
+    const result = await submitReport(null, formData);
+    setIsPending(false);
+
+    if (result.success) {
+      toast.success(result.message || "Thank you for your submission!");
+      formRef.current?.reset();
+    } else {
+      toast.error(result.message || "Something went wrong.");
+      if (result.errors) {
+        Object.values(result.errors).forEach((err: any) => {
+          if (err && err.length > 0) {
+            toast.error(err[0]);
+          }
+        });
+      }
+    }
+  };
 
   return (
     <section id="contact" className="py-32 px-6 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
@@ -110,8 +134,12 @@ export default function Contact() {
 
           {/* FORM */}
           <form
-            action="https://formspree.io/f/maqagwnl"
-            method="POST"
+            ref={formRef}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              await handleSubmit(formData);
+            }}
             className="space-y-5"
           >
 
@@ -148,12 +176,14 @@ export default function Contact() {
             {/* Button */}
             <button
               type="submit"
-              className={`w-full py-3 rounded-xl text-white ${
+              disabled={isPending}
+              className={`w-full py-3 rounded-xl text-white flex items-center justify-center gap-2 ${
                 tab === "bug"
                   ? "bg-red-500 hover:bg-red-600"
                   : "bg-gradient-to-r from-blue-600 to-indigo-500"
-              }`}
+              } disabled:opacity-70 disabled:cursor-not-allowed`}
             >
+              {isPending && <Loader2 className="w-5 h-5 animate-spin" />}
               {tab === "bug" ? "Report Bug" : "Send Message"}
             </button>
 
