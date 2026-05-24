@@ -11,7 +11,9 @@ export const sendNotificationEmail = async (data: EmailPayload) => {
   const { type, name, email, message } = data;
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER ,
       pass: process.env.EMAIL_PASS, 
@@ -47,7 +49,9 @@ export const sendAutoReplyEmail = async (data: EmailPayload) => {
   const { type, name, email } = data;
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
