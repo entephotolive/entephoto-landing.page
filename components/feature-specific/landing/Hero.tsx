@@ -166,7 +166,7 @@ export default function Hero() {
           className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
         >
           <button
-            onClick={() => window.location.href = `${appUrl}/qr-scanner`}
+            onClick={() => window.location.href = `${appUrl}/photographer`}
             className="w-44 sm:w-auto px-6 py-3 rounded-full text-white font-semibold text-sm sm:text-base bg-gradient-to-r from-orange-400 to-purple-600 shadow-xl hover:scale-105 transition"
           >
             Try It Now →
