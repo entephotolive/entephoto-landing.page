@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Check, User, Users, Camera, QrCode, Upload, Headphones, Star } from "lucide-react";
+import SiteNav from "@/components/shared/SiteNav";
+import SiteFooter from "@/components/shared/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Pricing | Entephoto – Event Photo Delivery Plans",
@@ -200,20 +202,7 @@ export default function PricingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="min-h-screen bg-gradient-to-br from-[#faf7ff] via-[#fff5f3] to-[#f3f6ff]">
-        {/* ── NAV ── */}
-        <nav aria-label="Main navigation" className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm">
-          <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-            <Link href="/landing" className="relative block w-40 h-10" aria-label="Entephoto home">
-              <Image src="/logo.png" alt="Entephoto" fill className="object-contain object-left" priority />
-            </Link>
-            <div className="flex items-center gap-6 text-sm font-semibold text-gray-600">
-              <Link href="/knowledge" className="hidden sm:block hover:text-purple-600 transition-colors">Knowledge Hub</Link>
-              <Link href="/landing#contact" className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white hover:opacity-90 transition-opacity">
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <SiteNav />
 
         {/* ── BREADCRUMB ── */}
         <div className="max-w-5xl mx-auto px-6 pt-6">
@@ -507,18 +496,7 @@ export default function PricingPage() {
           </section>
         </main>
 
-        {/* ── FOOTER ── */}
-        <footer className="py-8 px-6 bg-[#f5f1eb] border-t border-gray-200">
-          <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-            <p>© {new Date().getFullYear()} Entephoto. All rights reserved.</p>
-            <div className="flex gap-5">
-              <Link href="/landing" className="hover:text-purple-600 transition-colors">Home</Link>
-              <Link href="/knowledge" className="hover:text-purple-600 transition-colors">Knowledge Hub</Link>
-              <Link href="/instant-photo-delivery" className="hover:text-purple-600 transition-colors">How It Works</Link>
-              <Link href="/landing#contact" className="hover:text-purple-600 transition-colors">Contact</Link>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </div>
     </>
   );

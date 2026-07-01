@@ -1,71 +1,51 @@
 // app/camera-to-phone-photo-transfer/page.tsx
-import { getArticleBySlug, getRelatedArticles } from "@/lib/knowledge-articles";
-import ArticleLayout from "@/components/knowledge/ArticleLayout";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getFeaturePageBySlug, getFeatureJsonLd } from "@/lib/feature-pages";
+import FeatureArticleLayout from "@/components/feature-specific/FeatureArticleLayout";
 
 const slug = "camera-to-phone-photo-transfer";
 
 export const metadata: Metadata = {
-  title: "Camera to Phone Photo Transfer | Entephoto",
+  title: "Camera to Phone Photo Transfer for Events | Entephoto",
   description:
-    "Entephoto enables instant camera to phone photo transfer at events — photos move from the photographer's camera to every guest's phone in under a minute.",
+    "Instant camera to phone photo transfer for event photographers. Move photos directly from DSLR to guest phones in under a minute with AI delivery.",
+  keywords: [
+    "camera to phone transfer",
+    "DSLR to phone photo transfer",
+    "wireless event photo sharing",
+    "instant photo delivery for guests",
+    "PTP MTP photo transfer",
+  ],
   alternates: { canonical: "https://www.entephoto.co.in/camera-to-phone-photo-transfer" },
   openGraph: {
-    title: "Camera to Phone Photo Transfer | Entephoto",
-    description: "Entephoto enables instant camera to phone photo transfer at events — photos move from the photographer's camera to every guest's phone in under a minute.",
+    title: "Camera to Phone Photo Transfer for Events | Entephoto",
+    description:
+      "Instant camera to phone photo transfer for event photographers. Move photos directly from DSLR to guest phones in under a minute with AI delivery.",
     url: "https://www.entephoto.co.in/camera-to-phone-photo-transfer",
     siteName: "Entephoto",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Camera to Phone Photo Transfer — Entephoto" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Camera to Phone Photo Transfer | Entephoto",
-    description: "Entephoto enables instant camera to phone photo transfer at events — photos move from the photographer's camera to every guest's phone in under a minute.",
+    title: "Camera to Phone Photo Transfer for Events | Entephoto",
+    description:
+      "Move event photos from camera to guest phones instantly. Fast, automated, AI-powered photo delivery for any event.",
     images: ["/og-image.png"],
   },
 };
 
-export default function CameraToPhonePhotoTransferPage() {
-  const article = getArticleBySlug(slug);
-  if (!article) return notFound();
-  const related = getRelatedArticles(slug);
+export default function CameraToPhoneTransferPage() {
+  const page = getFeaturePageBySlug(slug);
+  if (!page) return notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "FAQPage",
-        mainEntity: article.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      },
-      {
-        "@type": "WebPage",
-        "@id": `https://www.entephoto.co.in/${slug}/#webpage`,
-        url: `https://www.entephoto.co.in/${slug}`,
-        name: article.h1,
-        description: article.intro,
-        inLanguage: "en-IN",
-        isPartOf: { "@id": "https://www.entephoto.co.in/#website" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.entephoto.co.in/landing" },
-          { "@type": "ListItem", position: 2, name: "Camera to Phone Photo Transfer", item: "https://www.entephoto.co.in/camera-to-phone-photo-transfer" },
-        ],
-      },
-    ],
-  };
+  const jsonLd = getFeatureJsonLd(page);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ArticleLayout article={article} relatedArticles={related} />
+      <FeatureArticleLayout page={page} />
     </>
   );
 }

@@ -6,7 +6,7 @@ export interface FAQ {
   answer: string;
 }
 
-export interface Section {
+interface Section {
   heading: string;
   body: string;
 }

@@ -127,6 +127,19 @@ export default function RootLayout({
                   },
                   description:
                     "Entephoto provides an advanced event photography platform with live photo sharing, AI-powered face recognition photo delivery, and secure cloud storage.",
+                  sameAs: [
+                    "https://www.instagram.com/_entephoto_/",
+                    "https://x.com/entephoto",
+                    "https://www.linkedin.com/company/114394331/",
+                  ],
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    telephone: "+918075393896",
+                    contactType: "customer service",
+                    email: "entephoto.live@gmail.com",
+                    areaServed: "IN",
+                    availableLanguage: ["English", "Hindi", "Malayalam"],
+                  },
                 },
                 {
                   "@type": "SoftwareApplication",

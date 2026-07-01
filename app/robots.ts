@@ -16,6 +16,11 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "PerplexityBot", allow: "/" },
       { userAgent: "Applebot-Extended", allow: "/" },
       { userAgent: "Amazonbot", allow: "/" },
+      { userAgent: "CCBot", allow: "/" },
+      { userAgent: "Bytespider", allow: "/" },
+      { userAgent: "meta-externalagent", allow: "/" },
+      { userAgent: "cohere-ai", allow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
     ],
     sitemap: "https://www.entephoto.co.in/sitemap.xml",
   };

@@ -1,71 +1,51 @@
 // app/event-photo-gallery/page.tsx
-import { getArticleBySlug, getRelatedArticles } from "@/lib/knowledge-articles";
-import ArticleLayout from "@/components/knowledge/ArticleLayout";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getFeaturePageBySlug, getFeatureJsonLd } from "@/lib/feature-pages";
+import FeatureArticleLayout from "@/components/feature-specific/FeatureArticleLayout";
 
 const slug = "event-photo-gallery";
 
 export const metadata: Metadata = {
-  title: "Event Photo Gallery | Entephoto",
+  title: "Event Photo Gallery Software | Entephoto",
   description:
-    "Entephoto's smart event photo gallery organizes thousands of photos automatically using AI. Every guest gets a personal, private gallery — no manual sorting required.",
+    "Event photo gallery software with AI-organized guest galleries, controlled downloads, and faster delivery. Build event galleries that guests can actually use.",
+  keywords: [
+    "event photo gallery",
+    "event gallery software",
+    "AI photo gallery for events",
+    "private event gallery",
+    "guest photo gallery platform",
+  ],
   alternates: { canonical: "https://www.entephoto.co.in/event-photo-gallery" },
   openGraph: {
-    title: "Event Photo Gallery | Entephoto",
-    description: "Entephoto's smart event photo gallery organizes thousands of photos automatically using AI. Every guest gets a personal, private gallery — no manual sorting required.",
+    title: "Event Photo Gallery Software | Entephoto",
+    description:
+      "Event photo gallery software with AI-organized guest galleries, controlled downloads, and faster delivery. Build event galleries that guests can actually use.",
     url: "https://www.entephoto.co.in/event-photo-gallery",
     siteName: "Entephoto",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Event Photo Gallery — Entephoto" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Event Photo Gallery | Entephoto",
-    description: "Entephoto's smart event photo gallery organizes thousands of photos automatically using AI. Every guest gets a personal, private gallery — no manual sorting required.",
+    title: "Event Photo Gallery Software | Entephoto",
+    description:
+      "Event photo gallery software with AI-organized guest galleries, controlled downloads, and faster delivery. Build event galleries that guests can actually use.",
     images: ["/og-image.png"],
   },
 };
 
 export default function EventPhotoGalleryPage() {
-  const article = getArticleBySlug(slug);
-  if (!article) return notFound();
-  const related = getRelatedArticles(slug);
+  const page = getFeaturePageBySlug(slug);
+  if (!page) return notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "FAQPage",
-        mainEntity: article.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      },
-      {
-        "@type": "WebPage",
-        "@id": `https://www.entephoto.co.in/${slug}/#webpage`,
-        url: `https://www.entephoto.co.in/${slug}`,
-        name: article.h1,
-        description: article.intro,
-        inLanguage: "en-IN",
-        isPartOf: { "@id": "https://www.entephoto.co.in/#website" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.entephoto.co.in/landing" },
-          { "@type": "ListItem", position: 2, name: "Event Photo Gallery", item: "https://www.entephoto.co.in/event-photo-gallery" },
-        ],
-      },
-    ],
-  };
+  const jsonLd = getFeatureJsonLd(page);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ArticleLayout article={article} relatedArticles={related} />
+      <FeatureArticleLayout page={page} />
     </>
   );
 }

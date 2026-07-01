@@ -4,6 +4,8 @@ import Image from "next/image";
 import FAQAccordion from "./FAQAccordion";
 import CTABlock from "./CTABlock";
 import type { KnowledgeArticle } from "@/lib/knowledge-articles";
+import SiteNav from "../shared/SiteNav";
+import SiteFooter from "../shared/SiteFooter";
 
 interface ArticleLayoutProps {
   article: KnowledgeArticle;
@@ -16,39 +18,12 @@ export default function ArticleLayout({
 }: ArticleLayoutProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#faf7ff] via-[#fff5f3] to-[#f3f6ff]">
-      {/* ── NAV ── */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link href="/landing" className="relative block w-40 h-10">
-            <Image
-              src="/logo.png"
-              alt="Entephoto"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </Link>
-          <div className="flex items-center gap-6 text-sm font-semibold text-gray-600">
-            <Link href="/knowledge" className="hover:text-purple-600 transition-colors">
-              Knowledge Hub
-            </Link>
-            <Link href="/pricing" className="hover:text-purple-600 transition-colors">
-              Pricing
-            </Link>
-            <Link
-              href="/landing#contact"
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white hover:opacity-90 transition-opacity"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* ── BREADCRUMB ── */}
       <div className="max-w-4xl mx-auto px-6 pt-8">
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-gray-400">
-          <Link href="/landing" className="hover:text-purple-600 transition-colors">Home</Link>
+          <Link href="/" className="hover:text-purple-600 transition-colors">Home</Link>
           <span>/</span>
           <Link href="/knowledge" className="hover:text-purple-600 transition-colors">Knowledge</Link>
           <span>/</span>
@@ -156,16 +131,7 @@ export default function ArticleLayout({
         <CTABlock />
       </div>
 
-      {/* ── FOOTER ── */}
-      <footer className="py-8 px-6 bg-[#f5f1eb] border-t border-gray-200 text-center text-xs text-gray-400">
-        <p>© {new Date().getFullYear()} Entephoto. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-3">
-          <Link href="/landing" className="hover:text-purple-600 transition-colors">Home</Link>
-          <Link href="/knowledge" className="hover:text-purple-600 transition-colors">Knowledge Hub</Link>
-          <Link href="/pricing" className="hover:text-purple-600 transition-colors">Pricing</Link>
-          <Link href="/landing#contact" className="hover:text-purple-600 transition-colors">Contact</Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

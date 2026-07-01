@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export interface IReport extends Document {
+interface IReport extends Document {
   type: "bug" | "feedback";
   name: string;
   email: string;

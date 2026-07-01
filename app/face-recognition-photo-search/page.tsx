@@ -1,71 +1,51 @@
 // app/face-recognition-photo-search/page.tsx
-import { getArticleBySlug, getRelatedArticles } from "@/lib/knowledge-articles";
-import ArticleLayout from "@/components/knowledge/ArticleLayout";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getFeaturePageBySlug, getFeatureJsonLd } from "@/lib/feature-pages";
+import FeatureArticleLayout from "@/components/feature-specific/FeatureArticleLayout";
 
 const slug = "face-recognition-photo-search";
 
 export const metadata: Metadata = {
-  title: "Face Recognition Photo Search | Entephoto",
+  title: "Face Recognition Photo Search for Events | Entephoto",
   description:
-    "Search thousands of event photos by face in seconds. Entephoto's face recognition photo search finds every photo you appear in — instantly and privately.",
+    "Face recognition photo search for event guests who need to find their own pictures quickly. Search event photos by face without browsing the full gallery manually.",
+  keywords: [
+    "face recognition photo search",
+    "find my event photos",
+    "search event photos by face",
+    "photo search by selfie",
+    "AI event photo search",
+  ],
   alternates: { canonical: "https://www.entephoto.co.in/face-recognition-photo-search" },
   openGraph: {
-    title: "Face Recognition Photo Search | Entephoto",
-    description: "Search thousands of event photos by face in seconds. Entephoto's face recognition photo search finds every photo you appear in — instantly and privately.",
+    title: "Face Recognition Photo Search for Events | Entephoto",
+    description:
+      "Face recognition photo search for event guests who need to find their own pictures quickly. Search event photos by face without browsing the full gallery manually.",
     url: "https://www.entephoto.co.in/face-recognition-photo-search",
     siteName: "Entephoto",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Face Recognition Photo Search — Entephoto" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Face Recognition Photo Search | Entephoto",
-    description: "Search thousands of event photos by face in seconds. Entephoto's face recognition photo search finds every photo you appear in — instantly and privately.",
+    title: "Face Recognition Photo Search for Events | Entephoto",
+    description:
+      "Face recognition photo search for event guests who need to find their own pictures quickly. Search event photos by face without browsing the full gallery manually.",
     images: ["/og-image.png"],
   },
 };
 
 export default function FaceRecognitionPhotoSearchPage() {
-  const article = getArticleBySlug(slug);
-  if (!article) return notFound();
-  const related = getRelatedArticles(slug);
+  const page = getFeaturePageBySlug(slug);
+  if (!page) return notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "FAQPage",
-        mainEntity: article.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      },
-      {
-        "@type": "WebPage",
-        "@id": `https://www.entephoto.co.in/${slug}/#webpage`,
-        url: `https://www.entephoto.co.in/${slug}`,
-        name: article.h1,
-        description: article.intro,
-        inLanguage: "en-IN",
-        isPartOf: { "@id": "https://www.entephoto.co.in/#website" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.entephoto.co.in/landing" },
-          { "@type": "ListItem", position: 2, name: "Face Recognition Photo Search", item: "https://www.entephoto.co.in/face-recognition-photo-search" },
-        ],
-      },
-    ],
-  };
+  const jsonLd = getFeatureJsonLd(page);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ArticleLayout article={article} relatedArticles={related} />
+      <FeatureArticleLayout page={page} />
     </>
   );
 }

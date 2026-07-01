@@ -1,71 +1,51 @@
 // app/photo-delivery-for-photographers/page.tsx
-import { getArticleBySlug, getRelatedArticles } from "@/lib/knowledge-articles";
-import ArticleLayout from "@/components/knowledge/ArticleLayout";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getFeaturePageBySlug, getFeatureJsonLd } from "@/lib/feature-pages";
+import FeatureArticleLayout from "@/components/feature-specific/FeatureArticleLayout";
 
 const slug = "photo-delivery-for-photographers";
 
 export const metadata: Metadata = {
-  title: "Photo Delivery for Photographers | Entephoto",
+  title: "Photo Delivery Software for Photographers | Entephoto",
   description:
-    "Entephoto is the photo delivery platform designed for professional event photographers. Automate delivery, delight clients, and grow your photography business.",
+    "Photo delivery software for photographers who want faster guest sharing, less manual sorting, and a more premium event service offering.",
+  keywords: [
+    "photo delivery for photographers",
+    "photographer photo delivery software",
+    "event photo delivery for studios",
+    "photo gallery software for photographers",
+    "guest delivery platform photographers",
+  ],
   alternates: { canonical: "https://www.entephoto.co.in/photo-delivery-for-photographers" },
   openGraph: {
-    title: "Photo Delivery for Photographers | Entephoto",
-    description: "Entephoto is the photo delivery platform designed for professional event photographers. Automate delivery, delight clients, and grow your photography business.",
+    title: "Photo Delivery Software for Photographers | Entephoto",
+    description:
+      "Photo delivery software for photographers who want faster guest sharing, less manual sorting, and a more premium event service offering.",
     url: "https://www.entephoto.co.in/photo-delivery-for-photographers",
     siteName: "Entephoto",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Photo Delivery for Photographers — Entephoto" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Photo Delivery for Photographers | Entephoto",
-    description: "Entephoto is the photo delivery platform designed for professional event photographers. Automate delivery, delight clients, and grow your photography business.",
+    title: "Photo Delivery Software for Photographers | Entephoto",
+    description:
+      "Photo delivery software for photographers who want faster guest sharing, less manual sorting, and a more premium event service offering.",
     images: ["/og-image.png"],
   },
 };
 
 export default function PhotoDeliveryForPhotographersPage() {
-  const article = getArticleBySlug(slug);
-  if (!article) return notFound();
-  const related = getRelatedArticles(slug);
+  const page = getFeaturePageBySlug(slug);
+  if (!page) return notFound();
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "FAQPage",
-        mainEntity: article.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      },
-      {
-        "@type": "WebPage",
-        "@id": `https://www.entephoto.co.in/${slug}/#webpage`,
-        url: `https://www.entephoto.co.in/${slug}`,
-        name: article.h1,
-        description: article.intro,
-        inLanguage: "en-IN",
-        isPartOf: { "@id": "https://www.entephoto.co.in/#website" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.entephoto.co.in/landing" },
-          { "@type": "ListItem", position: 2, name: "Photo Delivery for Photographers", item: "https://www.entephoto.co.in/photo-delivery-for-photographers" },
-        ],
-      },
-    ],
-  };
+  const jsonLd = getFeatureJsonLd(page);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ArticleLayout article={article} relatedArticles={related} />
+      <FeatureArticleLayout page={page} />
     </>
   );
 }

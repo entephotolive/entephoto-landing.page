@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { articles } from "@/lib/knowledge-articles";
+import SiteNav from "@/components/shared/SiteNav";
+import SiteFooter from "@/components/shared/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Knowledge Hub | Entephoto",
@@ -14,7 +16,18 @@ export const metadata: Metadata = {
       "Explore guides on live event photo sharing, AI face recognition, instant delivery, and professional event photography management.",
     url: "https://www.entephoto.co.in/knowledge",
     siteName: "Entephoto",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Knowledge Hub | Entephoto",
+    description:
+      "Explore guides on live event photo sharing, AI face recognition, instant delivery, and professional event photography management.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.entephoto.co.in/knowledge",
   },
 };
 
@@ -34,31 +47,7 @@ const categoryColors: Record<string, string> = {
 export default function KnowledgeHubPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#faf7ff] via-[#fff5f3] to-[#f3f6ff]">
-      {/* ── NAV ── */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link href="/landing" className="relative block w-40 h-10">
-            <Image
-              src="/logo.png"
-              alt="Entephoto"
-              fill
-              className="object-contain object-left"
-              priority
-            />
-          </Link>
-          <div className="flex items-center gap-6 text-sm font-semibold text-gray-600">
-            <Link href="/landing" className="hover:text-purple-600 transition-colors">
-              Home
-            </Link>
-            <Link
-              href="/landing#contact"
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white hover:opacity-90 transition-opacity"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       {/* ── HERO ── */}
       <header className="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
@@ -152,14 +141,7 @@ export default function KnowledgeHubPage() {
         </Link>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="py-8 px-6 bg-[#f5f1eb] border-t border-gray-200 text-center text-xs text-gray-400">
-        <p>© {new Date().getFullYear()} Entephoto. All rights reserved.</p>
-        <div className="flex justify-center gap-4 mt-3">
-          <Link href="/landing" className="hover:text-purple-600 transition-colors">Home</Link>
-          <Link href="/landing#contact" className="hover:text-purple-600 transition-colors">Contact</Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

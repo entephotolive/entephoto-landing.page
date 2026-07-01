@@ -35,6 +35,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/landing`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/knowledge`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${BASE}/camera-support`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${BASE}/security`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     ...dedicatedPages.map((slug) => ({
       url: `${BASE}/${slug}`,
       lastModified: now,

@@ -28,8 +28,15 @@ export async function generateMetadata({
       url: `https://www.entephoto.co.in/knowledge/${slug}`,
       siteName: "Entephoto",
       type: "article",
+      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.metaDescription,
+      images: ["/og-image.png"],
     },
     alternates: {
       canonical: `https://www.entephoto.co.in/knowledge/${slug}`,
@@ -83,7 +90,7 @@ export default async function ArticlePage({
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://www.entephoto.co.in/landing",
+            item: "https://www.entephoto.co.in",
           },
           {
             "@type": "ListItem",
