@@ -208,6 +208,7 @@ export default function Hero() {
               fill
               sizes="(max-width: 768px) 176px, 224px"
               className="object-cover"
+              priority={true}
             />
           </motion.div>
         ))}

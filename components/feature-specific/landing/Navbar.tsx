@@ -13,25 +13,6 @@ const links = [
   { label: "Get in touch", href: "#contact" },
 ];
 
-function LogoMark({ compact = false }: { compact?: boolean }) {
-  return (
-    <div
-      className={
-        compact
-          ? "w-12 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center"
-          : "w-14 h-9 rounded-full overflow-hidden bg-white/60 backdrop-blur-sm border border-white/40 shadow-sm flex items-center justify-center"
-      }
-    >
-      <Image
-        src="/logo.png"
-        alt="Ente Photo logo"
-        width={compact ? 48 : 56}
-        height={compact ? 32 : 36}
-        className="w-full h-full object-cover"
-      />
-    </div>
-  );
-}
 
 export default function Navbar() {
   const [darkNav, setDarkNav] = useState(true);
@@ -90,21 +71,26 @@ export default function Navbar() {
             : "bg-white/80 backdrop-blur-xl border-b border-gray-100 py-4 shadow-sm"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-3 lg:px-8">
           {/* LOGO */}
           <a
             href="#home"
-            className="flex items-center gap-3 font-extrabold text-2xl tracking-tighter text-[#1a1a2e] transition-transform hover:scale-105"
+            className="relative block w-48 md:w-64 h-10 md:h-12 ml-2 lg:ml-8 transition-transform hover:scale-105 scale-125 md:scale-150 origin-left"
           >
-            <LogoMark />
-            <span className="hidden sm:inline">Ente Photo</span>
+            <Image
+              src="/logo.png"
+              alt="Ente Photo logo"
+              fill
+              className="object-contain object-left"
+              priority={true}
+            />
           </a>
 
           {/* DESKTOP */}
-          <div className="hidden md:flex gap-10 items-center">
+          <div className="hidden lg:flex gap-10 items-center">
             {links.map((item, i) => {
               const isActive = activeSection === item.href.replace("#", "");
-              return (
+              return ( 
                 <a
                   key={i}
                   href={item.href}
@@ -127,7 +113,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* CTA */}
+          {/* CTA & MOBILE BTN */}
           <div className="flex items-center gap-4">
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -137,14 +123,14 @@ export default function Navbar() {
                   .getElementById("whats-app")
                   ?.scrollIntoView({ behavior: "smooth", block: "center" });
               }}
-              className="hidden md:block px-7 py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 shadow-lg shadow-purple-200/50"
+              className="hidden md:block px-6 lg:px-7 py-2 lg:py-2.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 shadow-lg shadow-purple-200/50 cursor-pointer"
             >
               Contact us →
             </motion.a>
 
             {/* MOBILE BTN */}
             <button
-              className="md:hidden p-2 rounded-lg text-[#1f2937] hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-[#1f2937] hover:bg-gray-100 transition-colors"
               onClick={() => setMenuOpen(true)}
             >
               <Menu size={26} />
@@ -168,10 +154,15 @@ export default function Navbar() {
               <a
                 href="#home"
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center gap-3 font-extrabold text-2xl tracking-tighter text-[#1a1a2e]"
+                className="relative block w-32 h-10 ml-2"
               >
-                <LogoMark compact />
-                <span>Ente Photo</span>
+                <Image
+                  src="/logo.png"
+                  alt="Ente Photo logo"
+                  fill
+                  className="object-contain object-left"
+                  priority={true}
+                />
               </a>
 
               <button
