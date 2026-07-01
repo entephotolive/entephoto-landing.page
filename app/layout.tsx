@@ -128,6 +128,85 @@ export default function RootLayout({
                   description:
                     "Entephoto provides an advanced event photography platform with live photo sharing, AI-powered face recognition photo delivery, and secure cloud storage.",
                 },
+                {
+                  "@type": "SoftwareApplication",
+                  name: "Entephoto",
+                  applicationCategory: "MultimediaApplication",
+                  operatingSystem: "Web, Android, iOS",
+                  url: "https://www.entephoto.co.in/",
+                  description:
+                    "AI-powered event photo sharing and delivery platform. Guests receive their photos instantly via face recognition — no sorting, no waiting.",
+                  offers: {
+                    "@type": "Offer",
+                    price: "0",
+                    priceCurrency: "INR",
+                  },
+                  featureList: [
+                    "AI face recognition",
+                    "Instant photo delivery",
+                    "Live event photo sharing",
+                    "WhatsApp and SMS delivery",
+                    "Event photo gallery management",
+                    "Multi-photographer support",
+                  ],
+                },
+                {
+                  "@type": "LocalBusiness",
+                  "@id": "https://www.entephoto.co.in/#localbusiness",
+                  name: "Entephoto",
+                  description:
+                    "AI-powered event photo delivery service based in Kerala, India. We offer instant photo sharing for weddings, corporate events, and live events using face recognition technology.",
+                  url: "https://www.entephoto.co.in/",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://www.entephoto.co.in/favicon.png",
+                  },
+                  image: "https://www.entephoto.co.in/og-image.png",
+                  telephone: "+918075393896",
+                  email: "entephoto.live@gmail.com",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Kerala",
+                    addressRegion: "KL",
+                    addressCountry: "IN",
+                  },
+                  areaServed: [
+                    { "@type": "State", name: "Kerala" },
+                    { "@type": "Country", name: "India" },
+                  ],
+                  priceRange: "₹999 - ₹3,499",
+                  sameAs: [
+                    "https://www.instagram.com/_entephoto_/",
+                    "https://x.com/entephoto",
+                    "https://www.linkedin.com/company/114394331/",
+                  ],
+                  hasOfferCatalog: {
+                    "@type": "OfferCatalog",
+                    name: "Entephoto Services",
+                    itemListElement: [
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Service",
+                          name: "Self Service Event Photo Delivery",
+                          description: "Photographer manages QR display and uploads. AI delivers photos to all guests instantly.",
+                        },
+                        price: "999",
+                        priceCurrency: "INR",
+                      },
+                      {
+                        "@type": "Offer",
+                        itemOffered: {
+                          "@type": "Service",
+                          name: "Entephoto Executive Event Photo Delivery",
+                          description: "A dedicated Entephoto executive attends your event, sets up QR displays, monitors uploads, and supports guests on-site.",
+                        },
+                        price: "3499",
+                        priceCurrency: "INR",
+                      },
+                    ],
+                  },
+                },
               ],
             }),
           }}

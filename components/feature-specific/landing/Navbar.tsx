@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -115,6 +116,18 @@ export default function Navbar() {
 
           {/* CTA & MOBILE BTN */}
           <div className="flex items-center gap-4">
+            <Link
+              href="/pricing"
+              className="hidden lg:block text-sm font-semibold text-gray-600 hover:text-purple-600 transition-colors"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/knowledge"
+              className="hidden lg:block text-sm font-semibold text-gray-600 hover:text-purple-600 transition-colors"
+            >
+              Guides
+            </Link>
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
