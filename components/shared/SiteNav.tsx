@@ -22,7 +22,7 @@ export default function SiteNav() {
             Pricing
           </Link>
           <Link
-            href="/#contact"
+            href="/landing#whats-app"
             className="px-5 py-2 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white hover:opacity-90 transition-opacity"
           >
             Contact Us

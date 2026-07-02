@@ -133,12 +133,15 @@ export default function KnowledgeHubPage() {
         <p className="text-white/80 mb-8 max-w-md mx-auto text-sm">
           Join photographers and event organizers delivering instant, personalized photos.
         </p>
-        <Link
-          href="/landing#contact"
-          className="inline-block px-8 py-3 rounded-full bg-white text-purple-600 font-bold text-sm shadow-lg hover:shadow-xl transition-shadow"
-        >
-          Get Started →
-        </Link>
+        {/* FIXED BUTTON POSITION */}
+        <div className="mt-auto pt-8 w-full max-w-sm mx-auto">
+          <a 
+            href={`${process.env.NEXT_PUBLIC_APP_URL}/photographer/login`}
+            className="block w-full py-4 rounded-xl bg-green-600 text-white font-semibold text-base hover:bg-green-700 transition text-center"
+          >
+            Create Event →
+          </a>
+        </div>
       </section>
 
       <SiteFooter />

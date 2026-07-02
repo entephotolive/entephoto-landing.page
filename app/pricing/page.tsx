@@ -47,20 +47,18 @@ const selfServiceFeatures = [
   "Photographer handles QR display setup",
   "Photographer manages all uploads",
   "Unlimited guest photo galleries",
-  "Full-resolution photo downloads",
-  "Email support",
+
 ];
 
 const executiveFeatures = [
-  "Everything in Self Service",
+  "Everything handle by entephoto executive",
   "Entephoto executive on-site at event",
   "Executive sets up QR display & banners",
   "Live upload monitoring & quality control",
   "On-site guest registration support",
   "Priority delivery & real-time troubleshooting",
   "Post-event gallery report & analytics",
-  "Dedicated WhatsApp support line",
-  "Priority phone support",
+  
 ];
 
 const selfServiceSteps = [
@@ -266,13 +264,15 @@ export default function PricingPage() {
                     ))}
                   </ul>
 
-                  <Link
-                    href="/landing#contact"
-                    id="self-service-cta"
-                    className="mt-2 block text-center px-6 py-3 rounded-full border-2 border-purple-500 text-purple-600 font-bold text-sm hover:bg-purple-600 hover:text-white transition-all"
-                  >
-                    Get Started – ₹999
-                  </Link>
+                  {/* FIXED BUTTON POSITION */}
+                  <div className="mt-auto pt-8">
+                    <a 
+                      href={`${process.env.NEXT_PUBLIC_APP_URL}/photographer/login`}
+                      className="block text-center w-full py-4 rounded-xl bg-green-600 text-white font-semibold text-base hover:bg-green-700 transition"
+                    >
+                      Create Event →
+                    </a>
+                  </div>
                 </div>
               </article>
 
@@ -315,61 +315,22 @@ export default function PricingPage() {
                     ))}
                   </ul>
 
-                  <Link
-                    href="/landing#contact"
+                  <a
+                    href="https://wa.me/918848086285?text=Hi!%20I'm%20interested%20in%20booking%20the%20Entephoto%20Executive%20plan%20for%20my%20event."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     id="executive-cta"
                     className="mt-2 block text-center px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold text-sm shadow-lg hover:shadow-purple-300 transition-shadow"
                   >
                     Book Executive – ₹3,499
-                  </Link>
+                  </a>
                 </div>
               </article>
             </div>
           </section>
 
-          {/* ── COMPARISON TABLE ── */}
-          <section aria-labelledby="compare-heading" className="max-w-4xl mx-auto px-6 pb-20">
-            <h2 id="compare-heading" className="font-bold text-2xl text-[#1a1a2e] text-center mb-8">
-              Plan Comparison
-            </h2>
-            <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-100">
-                    <th scope="col" className="px-6 py-4 text-left font-semibold text-gray-500 w-1/2">Feature</th>
-                    <th scope="col" className="px-6 py-4 text-center font-bold text-purple-600">Self Service<br/><span className="text-xs text-gray-400 font-normal">₹999</span></th>
-                    <th scope="col" className="px-6 py-4 text-center font-bold text-orange-500">With Executive<br/><span className="text-xs text-gray-400 font-normal">₹3,499</span></th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-50">
-                  {[
-                    ["AI face recognition delivery", true, true],
-                    ["QR code guest registration", true, true],
-                    ["WhatsApp / SMS photo delivery", true, true],
-                    ["Unlimited guests & photos", true, true],
-                    ["Full-resolution downloads", true, true],
-                    ["Photographer manages uploads", true, true],
-                    ["Entephoto executive on-site", false, true],
-                    ["Executive sets up QR display", false, true],
-                    ["Live upload monitoring", false, true],
-                    ["On-site guest support", false, true],
-                    ["Post-event analytics report", false, true],
-                    ["Priority phone support", false, true],
-                  ].map(([feature, self, exec], i) => (
-                    <tr key={i} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="px-6 py-3.5 text-gray-700 font-medium">{feature as string}</td>
-                      <td className="px-6 py-3.5 text-center">
-                        {self ? <Check size={16} className="inline text-purple-500" aria-label="Included" /> : <span className="text-gray-300 text-lg" aria-label="Not included">–</span>}
-                      </td>
-                      <td className="px-6 py-3.5 text-center">
-                        {exec ? <Check size={16} className="inline text-orange-500" aria-label="Included" /> : <span className="text-gray-300 text-lg" aria-label="Not included">–</span>}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+          
+          
 
           {/* ── HOW IT WORKS ── */}
           <section aria-labelledby="how-heading" className="max-w-5xl mx-auto px-6 pb-20">
@@ -478,12 +439,14 @@ export default function PricingPage() {
                   Contact us to book your plan, ask about availability, or get a custom quote for large events.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Link
-                    href="/landing#contact"
+                  <a
+                    href="https://wa.me/918848086285?text=Hi!%20I'm%20interested%20in%20Entephoto%20for%20my%20event."
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="px-7 py-3 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold text-sm shadow-lg hover:shadow-purple-300 transition-shadow"
                   >
                     Book Now →
-                  </Link>
+                  </a>
                   <Link
                     href="/knowledge"
                     className="px-7 py-3 rounded-full border border-gray-200 text-gray-700 font-semibold text-sm hover:border-purple-400 hover:text-purple-600 transition-colors"

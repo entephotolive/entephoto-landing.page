@@ -259,7 +259,8 @@ export const articles: KnowledgeArticle[] = [
           "Yes. Watermark templates can be configured per event. Watermarks are applied automatically during processing.",
       },
       {
-        question: "Can guests share photos directly to Instagram from the gallery?",
+        question:
+          "Can guests share photos directly to Instagram from the gallery?",
         answer:
           "Yes. Each photo has a one-tap share button optimized for Instagram Stories, WhatsApp, and Facebook.",
       },
@@ -346,7 +347,7 @@ export const articles: KnowledgeArticle[] = [
       },
       {
         heading: "How to Use Face Search",
-        body: "Guests navigate to the event gallery link, tap 'Find My Photos', take or upload a selfie, and within seconds see a curated, personal view of the entire gallery filtered to show only their photos.",
+        body: "When the Guests scan the qr and navigate to face scanning page. Scan your face and within seconds see a curated, personal view of the entire gallery filtered to show only their photos.",
       },
       {
         heading: "Useful for Guests Who Didn't Pre-Register",
@@ -409,7 +410,7 @@ export const articles: KnowledgeArticle[] = [
       },
       {
         heading: "Quality Control Before Delivery",
-        body: "Enable a review queue to manually approve photos before they are delivered to guests. Flag duplicates, out-of-focus shots, or private moments before distribution.",
+        body: "Enable a review queue to manually approve photos before they are delivered to guests. Flag duplicate photos or private moments before distribution.",
       },
       {
         heading: "Analytics and Reporting",
@@ -419,7 +420,7 @@ export const articles: KnowledgeArticle[] = [
     benefits: [
       "Centralized dashboard for all photographers",
       "Real-time delivery tracking",
-      "Photo review and approval queue",
+      "Photo review and upload queue",
       "Engagement analytics per photo",
       "Multi-event management",
       "API access for integration with existing workflows",
@@ -433,12 +434,12 @@ export const articles: KnowledgeArticle[] = [
       {
         question: "Does Entephoto integrate with Lightroom or Capture One?",
         answer:
-          "We currently offer a direct upload API. Lightroom and Capture One plugins are on the product roadmap for 2025.",
+          "No. Entephoto does not currently integrate with Lightroom or Capture One. Photos can be uploaded directly through the Entephoto platform.",
       },
       {
         question: "How does Entephoto handle duplicate photos?",
         answer:
-          "Our system automatically detects and flags near-duplicate images during processing. You can set rules to automatically discard duplicates or route them to a review queue.",
+          "Entephoto checks image filenames during upload. If a file with the same name already exists for the event, it is identified as a duplicate and can be skipped.",
       },
     ],
     relatedSlugs: [
@@ -549,9 +550,10 @@ export const articles: KnowledgeArticle[] = [
           "Photos queue locally and upload as soon as connectivity is restored. Delivery to guests is automatic once photos are processed.",
       },
       {
-        question: "Can Entephoto share photos to an event display screen in real time?",
+        question:
+          "Can Entephoto share photos to an event display screen in real time?",
         answer:
-          "Yes. Our live gallery wall feature can display an approved real-time photo feed on a TV or projector screen at your event.",
+          "Currently, this feature is not available. We're exploring support for a live event gallery that can display approved photos on TVs and projector screens in the future.",
       },
     ],
     relatedSlugs: [
@@ -593,14 +595,14 @@ export const articles: KnowledgeArticle[] = [
       "Upload from phone, laptop, or directly via API",
       "Works with any camera: DSLR, mirrorless, drone, or smartphone",
       "Guests receive photos on any phone OS",
-      "Full-resolution transfer with optional compression",
+      "High-quality compressed photo transfer",
       "Photographers can upload while still on-site",
     ],
     faqs: [
       {
         question: "Does Entephoto compress photos during transfer?",
         answer:
-          "We offer both full-resolution transfer and an optimized web-resolution option. The choice is per-event and controlled by the photographer.",
+          "Yes. Entephoto compresses photos during transfer to ensure faster uploads, quicker delivery, and a smooth viewing experience while maintaining high visual quality.",
       },
       {
         question: "Can photographers upload from a drone or GoPro?",
@@ -610,7 +612,7 @@ export const articles: KnowledgeArticle[] = [
       {
         question: "What is the maximum file size per photo?",
         answer:
-          "Individual photo files up to 50MB are supported. RAW files can be uploaded separately and linked to delivery copies.",
+          "Entephoto supports photo uploads up to 50MB per image. Photos are automatically optimized during processing to ensure fast delivery while maintaining high visual quality.",
       },
     ],
     relatedSlugs: [
@@ -627,9 +629,7 @@ export function getArticleBySlug(slug: string): KnowledgeArticle | undefined {
   return articles.find((a) => a.slug === slug);
 }
 
-export function getRelatedArticles(
-  slug: string
-): KnowledgeArticle[] {
+export function getRelatedArticles(slug: string): KnowledgeArticle[] {
   const article = getArticleBySlug(slug);
   if (!article) return [];
   return articles.filter((a) => article.relatedSlugs.includes(a.slug));

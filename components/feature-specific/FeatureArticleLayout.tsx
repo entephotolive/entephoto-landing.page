@@ -201,7 +201,7 @@ export default function FeatureArticleLayout({
               View Pricing
             </Link>
             <Link
-              href="/landing#contact"
+              href="/landing#whats-app"
               className="px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold text-sm shadow-md hover:shadow-lg transition-shadow whitespace-nowrap"
             >
               Contact Us

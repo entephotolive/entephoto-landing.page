@@ -28,12 +28,15 @@ export default function CTABlock({
           {subtext}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href={primaryHref}
-            className="px-7 py-3 rounded-full bg-gradient-to-r from-purple-600 to-orange-500 text-white font-bold text-sm shadow-lg hover:shadow-purple-300 transition-shadow"
-          >
-            {primaryLabel}
-          </Link>
+          {/* FIXED BUTTON POSITION */}
+          <div className="mt-auto pt-8 w-full sm:w-auto">
+            <a 
+              href={`${process.env.NEXT_PUBLIC_APP_URL}/photographer/login`}
+              className="block text-center w-full px-8 py-4 rounded-xl bg-green-600 text-white font-semibold text-base hover:bg-green-700 transition"
+            >
+              Create Event →
+            </a>
+          </div>
           <Link
             href={secondaryHref}
             className="px-7 py-3 rounded-full border border-gray-200 text-gray-700 font-semibold text-sm hover:border-purple-400 hover:text-purple-600 transition-colors"
